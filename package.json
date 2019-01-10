@@ -1,0 +1,27 @@
+{
+  "name": "netlify-functions-test",
+  "version": "1.0.0",
+  "repository": "git@github.com:NaoyukiMiyazaki/netlify-functions-test.git",
+  "author": "Naoyuki Miyazaki <miyazaki@buddying.jp>",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently 'yarn start:client' 'yarn start:functions'",
+    "start:client": "webpack-dev-server --mode development --hot --config webpack.config.js",
+    "start:functions": "netlify-lambda serve src/functions",
+    "build": "concurrently 'yarn build:client' 'yarn build:functions'",
+    "build:client": "NODE_ENV=production webpack --mode=production --config webpack.config.js",
+    "build:functions": "netlify-lambda build src/functions"
+  },
+  "dependencies": {
+    "node-fetch": "^2.3.0",
+    "rss-parser": "^3.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "netlify-lambda": "^1.1.1",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
